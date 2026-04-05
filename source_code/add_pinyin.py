@@ -5,6 +5,7 @@ Uses jieba word segmentation + pypinyin Style.TONE (Unicode tone marks).
 """
 
 import json
+import re
 from pathlib import Path
 import jieba
 from pypinyin import lazy_pinyin, Style
@@ -40,8 +41,41 @@ def orig_to_ruby(orig: str) -> str:
     return html
 
 
+def build_pinyin_sentences(orig: str) -> str:
+    """
+    Build pinyin string grouped by sentence for TTS reading.
+    Splits orig by sentence-ending punctuation (。；) and computes
+    pinyin for each sentence independently, then joins sentences
+    with ' 。 ' so TTS reads each sentence as one continuous phrase.
+    """
+    # Split orig into parts: [text, sep, text, sep, ...]
+    parts = re.split(r'(。|；)', orig)
+    sentences = []
+    for part in parts:
+        if not part.strip():
+            continue
+        if part in '。；':
+            # sentence boundary - add separator
+            if sentences:
+                sentences.append(' ' + part + ' ')
+            continue
+        # Regular text: compute pinyin and join syllables with spaces
+        words = list(jieba.cut(part))
+        syllable_groups = []
+        for word in words:
+            if not word.strip():
+                continue
+            pinyins = lazy_pinyin(word, style=Style.TONE)
+            syllable_groups.append(' '.join(pinyins))
+        sentences.append(' '.join(syllable_groups))
+    result = ''.join(sentences)
+    # Clean up multiple spaces
+    result = re.sub(r' +', ' ', result).strip()
+    return result
+
+
 def add_pinyin_to_file(json_path: Path) -> bool:
-    """Add pinyin and ruby fields to each block. Returns True if modified."""
+    """Add pinyin, ruby, and pinyinSentences fields to each block."""
     data = json.loads(json_path.read_text(encoding='utf-8'))
     modified = False
 
@@ -58,14 +92,10 @@ def add_pinyin_to_file(json_path: Path) -> bool:
             if word.strip():
                 pinyins = lazy_pinyin(word, style=Style.TONE)
                 pinyin_list.extend(pinyins)
-            else:
-                # Preserve whitespace/punctuation as-is in the list
-                for ch in word:
-                    if not is_cjk(ch):
-                        pass  # skip non-CJK from pinyin list
 
         block['pinyin'] = ' '.join(pinyin_list)
         block['ruby'] = orig_to_ruby(orig)
+        block['pinyinSentences'] = build_pinyin_sentences(orig)
         modified = True
 
     if modified:

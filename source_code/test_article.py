@@ -285,6 +285,20 @@ def test_article_html_has_audio_toggle():
     assert 'toggleAudio()' in html, "Missing toggleAudio function"
     assert 'AudioController' in html, "Missing AudioController class"
     assert '__articleBlocks' in html, "Missing __articleBlocks exposure"
+    assert 'pinyinSentences' in html, "Missing pinyinSentences usage in AudioController"
+
+
+def test_blocks_have_pinyin_sentences():
+    """Each block has a pinyinSentences field grouped by sentence"""
+    for f in DATA_DIR.glob('*.json'):
+        data = json.loads(f.read_text(encoding='utf-8'))
+        for i, block in enumerate(data.get('blocks', [])):
+            assert 'pinyinSentences' in block, f"{f.name} block[{i}] missing pinyinSentences"
+            ps = block['pinyinSentences']
+            assert ps, f"{f.name} block[{i}] pinyinSentences is empty"
+            # Must contain sentence-ending marks (Chinese) or space-separated syllables
+            assert ' ' in ps or '。' in ps or '；' in ps, \
+                f"{f.name} block[{i}] pinyinSentences doesn't look sentence-grouped"
 
 
 if __name__ == '__main__':

@@ -355,7 +355,8 @@
           return;
         }
         const block = this.blocks[this.currentIndex];
-        const text = block.pinyin || block.orig;
+        // Use pinyinSentences (grouped by sentence) for natural TTS reading
+        const text = block.pinyinSentences || block.pinyin || block.orig;
 
         // Highlight current block
         document.querySelectorAll('.orig-block').forEach((el, i) => el.classList.remove('audio-active'));
