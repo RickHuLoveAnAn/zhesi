@@ -29,6 +29,12 @@
     <div class="hero-subtitle" id="hero-subtitle"></div>
   </section>
 
+  <!-- Article Illustration -->
+  <div class="article-illustration" id="articleIllustration" style="display:none">
+    <img id="illustrationImg" src="" alt="">
+    <div class="illustration-caption" id="illustrationCaption"></div>
+  </div>
+
   <!-- Reading Area -->
   <div class="reading-area" id="reading-area">
     <div class="reading-toolbar">
@@ -246,6 +252,18 @@
       if (articleAudio) { articleAudio.pause(); articleAudio = null; }
       currentArticleId = data.id;
       initAudioPlayer(data.id);
+
+      // Show illustration if exists
+      const illusImg = document.getElementById('illustrationImg');
+      const illusDiv = document.getElementById('articleIllustration');
+      const illusCaption = document.getElementById('illustrationCaption');
+      const imgPath = `images/${data.id}.png`;
+      illusImg.src = imgPath;
+      illusImg.onload = () => {
+        illusDiv.style.display = 'block';
+        illusCaption.textContent = data.title + ' · 配图';
+      };
+      illusImg.onerror = () => { illusDiv.style.display = 'none'; };
 
       observeReveal();
       updateProgress();
