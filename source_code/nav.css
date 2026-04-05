@@ -82,13 +82,23 @@ body::before {
 
 /* ── Hero 区域 ── */
 .hero {
-  min-height: 60vh;
+  min-height: 72vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0 100px 0 88px;
+  justify-content: flex-end;
+  padding: 0 100px 72px 88px;
   position: relative;
   overflow: hidden;
+  background-color: var(--ink);
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.6s ease;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ── 文章配图 ── */
@@ -138,6 +148,8 @@ body::before {
   display: flex;
   align-items: center;
   gap: 12px;
+  position: relative;
+  z-index: 2;
 }
 .hero-label::before {
   content: '';
@@ -155,6 +167,8 @@ body::before {
   margin-bottom: 24px;
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) forwards 0.35s;
+  position: relative;
+  z-index: 2;
 }
 .hero-sub, .hero-subtitle {
   font-size: 0.82rem;
@@ -163,6 +177,24 @@ body::before {
   margin-bottom: 48px;
   opacity: 0;
   animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards 0.5s;
+  position: relative;
+  z-index: 2;
+}
+.hero::after {
+  content: '道';
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "ZCOOL XiaoWei", serif;
+  font-size: 38vw;
+  color: var(--ink);
+  opacity: 0.018;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.05em;
+  z-index: 0;
 }
 .hero-quote {
   max-width: 460px;
