@@ -272,10 +272,10 @@ body::before {
 .audio-progress {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.65rem;
+  gap: 8px;
+  font-size: 0.62rem;
   color: var(--muted);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 .audio-progress-bar {
   width: 80px;
@@ -283,6 +283,10 @@ body::before {
   background: var(--border);
   border-radius: 1px;
   overflow: hidden;
+}
+#audioTimeLabel {
+  min-width: 70px;
+  text-align: center;
 }
 .audio-progress-fill {
   height: 100%;

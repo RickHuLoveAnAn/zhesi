@@ -41,8 +41,8 @@
         <span id="audioToggleLabel">朗读</span>
       </button>
       <div class="audio-progress" id="audioProgress" style="display:none">
-        <span id="audioBlockNum"></span>
         <div class="audio-progress-bar"><div class="audio-progress-fill" id="audioProgressFill"></div></div>
+        <span id="audioTimeLabel"></span>
         <button class="audio-stop" onclick="stopAudio()" title="停止">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
@@ -242,6 +242,11 @@
       // Expose blocks for audio controller
       window.__articleBlocks = data.blocks || [];
 
+      // Init audio player for this article
+      if (articleAudio) { articleAudio.pause(); articleAudio = null; }
+      currentArticleId = data.id;
+      initAudioPlayer(data.id);
+
       observeReveal();
       updateProgress();
     }
@@ -290,132 +295,93 @@
       document.getElementById('pinyinToggle').classList.toggle('active', pinyinVisible);
     }
 
-    // ── Audio / TTS ──────────────────────────────────────────
-    let audioController = null;
+    // ── Audio Player (pre-generated MP3) ───────────────────
+    let articleAudio = null;
+    let currentArticleId = null;
+
+    function initAudioPlayer(id) {
+      currentArticleId = id;
+      articleAudio = new Audio(`audio/${id}.mp3`);
+      articleAudio.addEventListener('timeupdate', onAudioTimeUpdate);
+      articleAudio.addEventListener('ended', onAudioEnded);
+      articleAudio.addEventListener('play', onAudioPlay);
+      articleAudio.addEventListener('pause', onAudioPause);
+      articleAudio.addEventListener('error', () => {
+        stopAudio();
+        document.getElementById('audioToggle').style.display = 'none';
+      });
+    }
+
+    function onAudioTimeUpdate() {
+      if (!articleAudio || !articleAudio.duration) return;
+      const pct = (articleAudio.currentTime / articleAudio.duration) * 100;
+      document.getElementById('audioProgressFill').style.width = pct + '%';
+      const curr = formatTime(articleAudio.currentTime);
+      const dur = formatTime(articleAudio.duration);
+      document.getElementById('audioTimeLabel').textContent = `${curr} / ${dur}`;
+
+      // Highlight current block by proportion of audio
+      const blocks = window.__articleBlocks || [];
+      if (!blocks.length) return;
+      const blockIdx = Math.min(
+        Math.floor((articleAudio.currentTime / articleAudio.duration) * blocks.length),
+        blocks.length - 1
+      );
+      document.querySelectorAll('.orig-block').forEach((el, i) => {
+        el.classList.toggle('audio-active', i === blockIdx);
+      });
+      // Scroll into view
+      const activeEl = document.getElementById(`orig-${blockIdx}`);
+      if (activeEl) {
+        activeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function onAudioEnded() {
+      stopAudio();
+    }
+
+    function onAudioPlay() {
+      document.getElementById('audioProgress').style.display = 'flex';
+      document.getElementById('audioToggle').classList.add('playing');
+      document.getElementById('audioToggleLabel').textContent = '暂停';
+      document.getElementById('audioIcon').innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+    }
+
+    function onAudioPause() {
+      document.getElementById('audioToggleLabel').textContent = '继续';
+      document.getElementById('audioIcon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+    }
 
     function toggleAudio() {
-      if (!audioController) {
-        const blocks = window.__articleBlocks || [];
-        if (!blocks.length) return;
-        audioController = new AudioController(blocks);
-        audioController.onEnd = () => stopAudio();
-        audioController.onBlockChange = (i, total) => {
-          document.getElementById('audioBlockNum').textContent = `${i + 1} / ${total}`;
-          document.getElementById('audioProgressFill').style.width =
-            ((i + 1) / total * 100) + '%';
-        };
-        audioController.start();
+      if (!articleAudio) {
+        if (!currentArticleId) return;
+        initAudioPlayer(currentArticleId);
       }
-      if (audioController.isPlaying()) {
-        audioController.pause();
+      if (articleAudio.paused) {
+        articleAudio.play();
       } else {
-        audioController.resume();
+        articleAudio.pause();
       }
     }
 
     function stopAudio() {
-      if (audioController) {
-        audioController.stop();
-        audioController = null;
+      if (articleAudio) {
+        articleAudio.pause();
+        articleAudio.currentTime = 0;
       }
       document.getElementById('audioProgress').style.display = 'none';
       document.getElementById('audioToggle').classList.remove('playing');
       document.getElementById('audioToggleLabel').textContent = '朗读';
       document.getElementById('audioIcon').innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
+      document.querySelectorAll('.orig-block').forEach(el => el.classList.remove('audio-active'));
     }
 
-    class AudioController {
-      constructor(blocks) {
-        this.blocks = blocks; // [{pinyin, orig}]
-        this.synth = window.speechSynthesis;
-        this.queue = [];
-        this.currentIndex = 0;
-        this.paused = false;
-        this.utterance = null;
-        this._boundEnd = this._onEnd.bind(this);
-      }
-
-      isPlaying() {
-        return this.synth.speaking && !this.paused;
-      }
-
-      start() {
-        // Show progress bar
-        document.getElementById('audioProgress').style.display = 'flex';
-        document.getElementById('audioToggle').classList.add('playing');
-        document.getElementById('audioToggleLabel').textContent = '暂停';
-        document.getElementById('audioIcon').innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
-        this._speakNext();
-      }
-
-      _speakNext() {
-        if (this.currentIndex >= this.blocks.length) {
-          this._cleanup();
-          if (this.onEnd) this.onEnd();
-          return;
-        }
-        const block = this.blocks[this.currentIndex];
-        // Use pinyinSentences (grouped by sentence) for natural TTS reading
-        const text = block.pinyinSentences || block.pinyin || block.orig;
-
-        // Highlight current block
-        document.querySelectorAll('.orig-block').forEach((el, i) => el.classList.remove('audio-active'));
-        const currentEl = document.getElementById(`orig-${this.currentIndex}`);
-        if (currentEl) {
-          currentEl.classList.add('audio-active');
-          currentEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        if (this.onBlockChange) this.onBlockChange(this.currentIndex, this.blocks.length);
-
-        const utt = new SpeechSynthesisUtterance(text);
-        utt.lang = 'zh-CN';
-        utt.rate = 0.85;
-        utt.pitch = 1.0;
-        // Try to pick a Chinese voice
-        const voices = this.synth.getVoices();
-        const zhVoice = voices.find(v => v.lang.startsWith('zh'));
-        if (zhVoice) utt.voice = zhVoice;
-
-        utt.onend = this._boundEnd;
-        utt.onerror = this._boundEnd;
-        this.utterance = utt;
-        this.synth.speak(utt);
-      }
-
-      _onEnd() {
-        if (this.paused) return;
-        this.currentIndex++;
-        this._speakNext();
-      }
-
-      pause() {
-        this.paused = true;
-        this.synth.pause();
-        document.getElementById('audioToggleLabel').textContent = '继续';
-        document.getElementById('audioIcon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
-      }
-
-      resume() {
-        this.paused = false;
-        this.synth.resume();
-        document.getElementById('audioToggleLabel').textContent = '暂停';
-        document.getElementById('audioIcon').innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
-      }
-
-      stop() {
-        this._cleanup();
-        this.synth.cancel();
-      }
-
-      _cleanup() {
-        document.querySelectorAll('.orig-block').forEach(el => el.classList.remove('audio-active'));
-      }
-    }
-
-    // Pre-load voices (needed for Chrome)
-    if (window.speechSynthesis) {
-      window.speechSynthesis.getVoices();
-      window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    function formatTime(s) {
+      if (!s || isNaN(s)) return '0:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return `${m}:${sec.toString().padStart(2, '0')}`;
     }
 
     loadArticle();

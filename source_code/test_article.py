@@ -279,13 +279,13 @@ def test_article_html_renders_ruby_div():
 
 
 def test_article_html_has_audio_toggle():
-    """article.html has audio toggle button and AudioController"""
+    """article.html has audio toggle button and HTML5 Audio player"""
     html = (BASE / 'article.html').read_text(encoding='utf-8')
     assert 'id="audioToggle"' in html, "Missing audioToggle button"
     assert 'toggleAudio()' in html, "Missing toggleAudio function"
-    assert 'AudioController' in html, "Missing AudioController class"
+    assert 'initAudioPlayer' in html, "Missing initAudioPlayer function"
+    assert 'articleAudio' in html, "Missing articleAudio variable"
     assert '__articleBlocks' in html, "Missing __articleBlocks exposure"
-    assert 'pinyinSentences' in html, "Missing pinyinSentences usage in AudioController"
 
 
 def test_blocks_have_pinyin_sentences():
