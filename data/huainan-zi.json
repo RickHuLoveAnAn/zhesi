@@ -1,0 +1,51 @@
+{
+  "id": "huainan-zi",
+  "filename": "huainan-zi.html",
+  "title": "淮南子",
+  "section": "道家",
+  "label": "道家经典",
+  "author": "西汉·刘安",
+  "bgChar": "海",
+  "isDaoJia": true,
+  "coreQuote": "百川异源，而皆归于海；百家殊业，皆务于治",
+  "blocks": [
+    {
+      "num": "一",
+      "orig": "天气为魂，地气为魄， Geist 之守，体气乃通。",
+      "note": "魂魄与体气：天气为魂，地气为魄， Geist 守住，体气乃通——人的精神与形体相合，生命才完整。",
+      "pinyin": "tiān qì wèi hún ， dì qì wèi pò ， Geist zhī shǒu ， tǐ qì nǎi tōng 。",
+      "ruby": "<ruby>天<rt>tiān</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>魂<rt>hún</rt></ruby>，<ruby>地<rt>dì</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>魄<rt>pò</rt></ruby>， G <ruby>之<rt>zhī</rt></ruby><ruby>守<rt>shǒu</rt></ruby>，<ruby>体<rt>tǐ</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>乃<rt>nǎi</rt></ruby><ruby>通<rt>tōng</rt></ruby>。"
+    },
+    {
+      "num": "二",
+      "orig": "百川异源，而皆归于海。百家殊业，皆务于治。",
+      "note": "百川归海：百川源头各异，终归于海；百家事业不同，皆务于治——表面分歧，终点一致，归于大道。",
+      "pinyin": "bǎi chuān yì yuán ， ér jiē guī yú hǎi 。 bǎi jiā shū yè ， jiē wù yú zhì 。",
+      "ruby": "<ruby>百<rt>bǎi</rt></ruby><ruby>川<rt>chuān</rt></ruby><ruby>异<rt>yì</rt></ruby><ruby>源<rt>yuán</rt></ruby>，<ruby>而<rt>ér</rt></ruby><ruby>皆<rt>jiē</rt></ruby><ruby>归<rt>guī</rt></ruby><ruby>于<rt>yú</rt></ruby><ruby>海<rt>hǎi</rt></ruby>。<ruby>百<rt>bǎi</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>殊<rt>shū</rt></ruby><ruby>业<rt>yè</rt></ruby>，<ruby>皆<rt>jiē</rt></ruby><ruby>务<rt>wù</rt></ruby><ruby>于<rt>yú</rt></ruby><ruby>治<rt>zhì</rt></ruby>。"
+    },
+    {
+      "num": "三",
+      "orig": "圣人内修道术，不外饰仁义，而民自化。",
+      "note": "内圣而化：圣人在内心修道术，不在外在装饰仁义，而民众自然被感化——无为而化，是最深的治理。",
+      "pinyin": "shèng rén nèi xiū dào shù ， bù wài shì rén yì ， ér mín zì huà 。",
+      "ruby": "<ruby>圣<rt>shèng</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>内<rt>nèi</rt></ruby><ruby>修<rt>xiū</rt></ruby><ruby>道<rt>dào</rt></ruby><ruby>术<rt>shù</rt></ruby>，<ruby>不<rt>bù</rt></ruby><ruby>外<rt>wài</rt></ruby><ruby>饰<rt>shì</rt></ruby><ruby>仁<rt>rén</rt></ruby><ruby>义<rt>yì</rt></ruby>，<ruby>而<rt>ér</rt></ruby><ruby>民<rt>mín</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>化<rt>huà</rt></ruby>。"
+    }
+  ],
+  "comparison": [
+    {
+      "label": "宇宙",
+      "left": "天气为魂，地气为魄",
+      "right": "Geist守则体气通"
+    },
+    {
+      "label": "政治",
+      "left": "内修道术",
+      "right": "民自化"
+    },
+    {
+      "label": "哲学",
+      "left": "百川归海",
+      "right": "百家殊业，归于一道"
+    }
+  ]
+}

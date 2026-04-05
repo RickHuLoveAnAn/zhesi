@@ -1,0 +1,36 @@
+{
+  "id": "shan-xing",
+  "filename": "shan-xing.html",
+  "title": "缮性",
+  "label": "外篇 · 第十六",
+  "section": "外篇",
+  "author": "战国·庄周",
+  "bgChar": "",
+  "subtitle": "率性而动，禀生而存",
+  "isDaoJia": false,
+  "coreQuote": "无以故灭命，无以人灭天谨守而勿失，是谓反其真",
+  "blocks": [
+    {
+      "num": "一",
+      "orig": "缮性于俗，俗学之以求复其初，而滑欲于俗，思以求致其明，谓之蒙蔽之民。古之行身者，不以辩饰知，不以知穷天下，不以知穷德，危然处其所而反其性，己又何为哉！",
+      "note": "缮性：修补心性。庄子批评在世俗中修补心性，用世俗学问来回复本初的人，这样反而使欲念更加混乱。真正的古人之道：不用辩论来修饰智慧，不用智巧来困迫天下，不用心智来困扰德性。<br>危然处其所：独立自持地处于自己的位置，返回自己的本性，不受外界干扰。",
+      "pinyin": "shàn xìng yú sú ， sú xué zhī yǐ qiú fù qí chū ， ér huá yù yú sú ， sī yǐ qiú zhì qí míng ， wèi zhī méng bì zhī mín 。 gǔ zhī xíng shēn zhě ， bù yǐ biàn shì zhī ， bù yǐ zhī qióng tiān xià ， bù yǐ zhī qióng dé ， wēi rán chù qí suǒ ér fǎn qí xìng ， jǐ yòu hé wèi zāi ！",
+      "ruby": "<ruby>缮<rt>shàn</rt></ruby><ruby>性<rt>xìng</rt></ruby><ruby>于<rt>yú</rt></ruby><ruby>俗<rt>sú</rt></ruby>，<ruby>俗<rt>sú</rt></ruby><ruby>学<rt>xué</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>求<rt>qiú</rt></ruby><ruby>复<rt>fù</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>初<rt>chū</rt></ruby>，<ruby>而<rt>ér</rt></ruby><ruby>滑<rt>huá</rt></ruby><ruby>欲<rt>yù</rt></ruby><ruby>于<rt>yú</rt></ruby><ruby>俗<rt>sú</rt></ruby>，<ruby>思<rt>sī</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>求<rt>qiú</rt></ruby><ruby>致<rt>zhì</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>明<rt>míng</rt></ruby>，<ruby>谓<rt>wèi</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>蒙<rt>méng</rt></ruby><ruby>蔽<rt>bì</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>民<rt>mín</rt></ruby>。<ruby>古<rt>gǔ</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>行<rt>xíng</rt></ruby><ruby>身<rt>shēn</rt></ruby><ruby>者<rt>zhě</rt></ruby>，<ruby>不<rt>bù</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>辩<rt>biàn</rt></ruby><ruby>饰<rt>shì</rt></ruby><ruby>知<rt>zhī</rt></ruby>，<ruby>不<rt>bù</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>知<rt>zhī</rt></ruby><ruby>穷<rt>qióng</rt></ruby><ruby>天<rt>tiān</rt></ruby><ruby>下<rt>xià</rt></ruby>，<ruby>不<rt>bù</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>知<rt>zhī</rt></ruby><ruby>穷<rt>qióng</rt></ruby><ruby>德<rt>dé</rt></ruby>，<ruby>危<rt>wēi</rt></ruby><ruby>然<rt>rán</rt></ruby><ruby>处<rt>chù</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>而<rt>ér</rt></ruby><ruby>反<rt>fǎn</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>性<rt>xìng</rt></ruby>，<ruby>己<rt>jǐ</rt></ruby><ruby>又<rt>yòu</rt></ruby><ruby>何<rt>hé</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>哉<rt>zāi</rt></ruby>！"
+    },
+    {
+      "num": "二",
+      "orig": "古之人，在混芒之中，与一世而淡漠焉。当是时也，阴阳和静，鬼神不扰，四时得节，万物不伤，群生不夭，人虽有知，无所用之，此之谓至一。当是时也，莫之为而常自然。",
+      "note": "混芒之中：混沌蒙昧之中。远古之人在混芒之中，与整个世界淡漠相处。那时候阴阳和谐宁静，鬼神不扰，四季得节，万物不受伤害，所有生灵不夭亡——人虽有智慧，却无处可用。这就是\"至一\"的境界。",
+      "pinyin": "gǔ zhī rén ， zài hùn máng zhī zhōng ， yǔ yī shì ér dàn mò yān 。 dāng shì shí yě ， yīn yáng hé jìng ， guǐ shén bù rǎo ， sì shí dé jié ， wàn wù bù shāng ， qún shēng bù yāo ， rén suī yǒu zhī ， wú suǒ yòng zhī ， cǐ zhī wèi zhì yī 。 dāng shì shí yě ， mò zhī wèi ér cháng zì rán 。",
+      "ruby": "<ruby>古<rt>gǔ</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>人<rt>rén</rt></ruby>，<ruby>在<rt>zài</rt></ruby><ruby>混<rt>hùn</rt></ruby><ruby>芒<rt>máng</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>中<rt>zhōng</rt></ruby>，<ruby>与<rt>yǔ</rt></ruby><ruby>一<rt>yī</rt></ruby><ruby>世<rt>shì</rt></ruby><ruby>而<rt>ér</rt></ruby><ruby>淡<rt>dàn</rt></ruby><ruby>漠<rt>mò</rt></ruby><ruby>焉<rt>yān</rt></ruby>。<ruby>当<rt>dāng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>时<rt>shí</rt></ruby><ruby>也<rt>yě</rt></ruby>，<ruby>阴<rt>yīn</rt></ruby><ruby>阳<rt>yáng</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>静<rt>jìng</rt></ruby>，<ruby>鬼<rt>guǐ</rt></ruby><ruby>神<rt>shén</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>扰<rt>rǎo</rt></ruby>，<ruby>四<rt>sì</rt></ruby><ruby>时<rt>shí</rt></ruby><ruby>得<rt>dé</rt></ruby><ruby>节<rt>jié</rt></ruby>，<ruby>万<rt>wàn</rt></ruby><ruby>物<rt>wù</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>伤<rt>shāng</rt></ruby>，<ruby>群<rt>qún</rt></ruby><ruby>生<rt>shēng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>夭<rt>yāo</rt></ruby>，<ruby>人<rt>rén</rt></ruby><ruby>虽<rt>suī</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>知<rt>zhī</rt></ruby>，<ruby>无<rt>wú</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>之<rt>zhī</rt></ruby>，<ruby>此<rt>cǐ</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>谓<rt>wèi</rt></ruby><ruby>至<rt>zhì</rt></ruby><ruby>一<rt>yī</rt></ruby>。<ruby>当<rt>dāng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>时<rt>shí</rt></ruby><ruby>也<rt>yě</rt></ruby>，<ruby>莫<rt>mò</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>而<rt>ér</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>自<rt>zì</rt></ruby><ruby>然<rt>rán</rt></ruby>。"
+    },
+    {
+      "num": "三",
+      "orig": "夫德者，道德之乡也。不可忘德，不可言失也。物之性，天下之所是也；事之变，天下之全也。无以故灭命，无以人灭天，无以得殉名。谨守而勿失，是谓反其真。",
+      "note": "德：道德之乡，即道的所在。德不可忘记，也不可以言说失去。物的本性，是天下所认可的；事的变化，是天下所保全的。<br>不要以人为的智巧来毁灭自然之命，不要以人为的造作来毁灭天然，不要以有所得来殉求名声。谨慎守住这些而不失去，就叫返回真性。",
+      "pinyin": "fū dé zhě ， dào dé zhī xiāng yě 。 bù kě wàng dé ， bù kě yán shī yě 。 wù zhī xìng ， tiān xià zhī suǒ shì yě ； shì zhī biàn ， tiān xià zhī quán yě 。 wú yǐ gù miè mìng ， wú yǐ rén miè tiān ， wú yǐ dé xùn míng 。 jǐn shǒu ér wù shī ， shì wèi fǎn qí zhēn 。",
+      "ruby": "<ruby>夫<rt>fū</rt></ruby><ruby>德<rt>dé</rt></ruby><ruby>者<rt>zhě</rt></ruby>，<ruby>道<rt>dào</rt></ruby><ruby>德<rt>dé</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>乡<rt>xiāng</rt></ruby><ruby>也<rt>yě</rt></ruby>。<ruby>不<rt>bù</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>忘<rt>wàng</rt></ruby><ruby>德<rt>dé</rt></ruby>，<ruby>不<rt>bù</rt></ruby><ruby>可<rt>kě</rt></ruby><ruby>言<rt>yán</rt></ruby><ruby>失<rt>shī</rt></ruby><ruby>也<rt>yě</rt></ruby>。<ruby>物<rt>wù</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>性<rt>xìng</rt></ruby>，<ruby>天<rt>tiān</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>所<rt>suǒ</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>也<rt>yě</rt></ruby>；<ruby>事<rt>shì</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>变<rt>biàn</rt></ruby>，<ruby>天<rt>tiān</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>全<rt>quán</rt></ruby><ruby>也<rt>yě</rt></ruby>。<ruby>无<rt>wú</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>故<rt>gù</rt></ruby><ruby>灭<rt>miè</rt></ruby><ruby>命<rt>mìng</rt></ruby>，<ruby>无<rt>wú</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>灭<rt>miè</rt></ruby><ruby>天<rt>tiān</rt></ruby>，<ruby>无<rt>wú</rt></ruby><ruby>以<rt>yǐ</rt></ruby><ruby>得<rt>dé</rt></ruby><ruby>殉<rt>xùn</rt></ruby><ruby>名<rt>míng</rt></ruby>。<ruby>谨<rt>jǐn</rt></ruby><ruby>守<rt>shǒu</rt></ruby><ruby>而<rt>ér</rt></ruby><ruby>勿<rt>wù</rt></ruby><ruby>失<rt>shī</rt></ruby>，<ruby>是<rt>shì</rt></ruby><ruby>谓<rt>wèi</rt></ruby><ruby>反<rt>fǎn</rt></ruby><ruby>其<rt>qí</rt></ruby><ruby>真<rt>zhēn</rt></ruby>。"
+    }
+  ],
+  "comparison": []
+}

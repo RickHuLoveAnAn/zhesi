@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>哲思经典</title>
+  <link rel="stylesheet" href="source_code/nav.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <style>
+    /* ── 首页 Hero ── */
+    .home-hero {
+      min-height: 72vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 100px 0 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .home-hero::after {
+      content: '道';
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: "ZCOOL XiaoWei", serif;
+      font-size: 38vw;
+      color: var(--ink);
+      opacity: 0.018;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+    .home-hero-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .home-hero-label::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .home-hero-title {
+      font-family: "ZCOOL XiaoWei", serif;
+      font-size: clamp(4rem, 8vw, 7.5rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) forwards 0.35s;
+    }
+    .home-hero-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.3em;
+      margin-bottom: 0;
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards 0.5s;
+    }
+
+    /* ── 首页 4 卡片区域 ── */
+    .home-cards {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 48px 96px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .home-card {
+      background: rgba(247,242,232,0.65);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 28px 24px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.25s,
+                  border-color 0.25s;
+    }
+    .home-card.visible { opacity: 1; transform: translateY(0); }
+    .home-card:hover {
+      box-shadow: 0 8px 32px var(--shadow);
+      border-color: var(--gold-light);
+    }
+    .home-card:nth-child(1) { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards 0.15s; }
+    .home-card:nth-child(2) { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards 0.25s; }
+    .home-card:nth-child(3) { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards 0.35s; }
+    .home-card:nth-child(4) { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards 0.45s; }
+
+    .home-card-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .home-card-title {
+      font-family: "ZCOOL XiaoWei", serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+    .home-card-count {
+      font-size: 0.58rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+      padding: 2px 8px;
+    }
+
+    .home-card-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 0;
+    }
+    .home-card-list li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s, padding-left 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .home-card-list li a:hover {
+      background: rgba(184,58,46,0.06);
+      color: var(--vermilion);
+      padding-left: 12px;
+    }
+    .home-card-list .num {
+      font-family: "ZCOOL XiaoWei", serif;
+      font-size: 0.72rem;
+      color: var(--gold);
+      opacity: 0.7;
+      min-width: 22px;
+    }
+    .home-card-list li a .name {
+      flex: 1;
+    }
+
+    /* 杂篇和道家篇卡片高度一致 */
+    .home-card:nth-child(3) .home-card-list,
+    .home-card:nth-child(4) .home-card-list {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 860px) {
+      .home-cards { grid-template-columns: 1fr; }
+      .home-hero { padding: 0 48px 0 72px; }
+    }
+    @media (max-width: 680px) {
+      .home-hero { padding: 0 24px 0 56px; }
+      .home-cards { padding: 16px 20px 64px; }
+      .home-card-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .home-hero::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="side-rule"></div>
+
+  <!-- Hero -->
+  <section class="home-hero">
+    <div class="home-hero-label">CLASSICAL CHINESE TEXTS</div>
+    <h1 class="home-hero-title">哲思经典</h1>
+    <div class="home-hero-sub">庄子 · 道家经典</div>
+  </section>
+
+  <!-- 4 Cards -->
+  <div class="home-cards">
+
+    <div class="home-card" id="card-nei">
+      <div class="home-card-header">
+        <span class="home-card-title">庄子·内篇</span>
+        <span class="home-card-count">7篇</span>
+      </div>
+      <ul class="home-card-list">
+        <li><a href="article.html?id=xiaoyao-you"><span class="num">一</span><span class="name">逍遥游</span></a></li>
+        <li><a href="article.html?id=qi-wu-lun"><span class="num">二</span><span class="name">齐物论</span></a></li>
+        <li><a href="article.html?id=yang-sheng-zhu"><span class="num">三</span><span class="name">养生主</span></a></li>
+        <li><a href="article.html?id=ren-jian-shi"><span class="num">四</span><span class="name">人间世</span></a></li>
+        <li><a href="article.html?id=de-chong-fu"><span class="num">五</span><span class="name">德充符</span></a></li>
+        <li><a href="article.html?id=da-zong-shi"><span class="num">六</span><span class="name">大宗师</span></a></li>
+        <li><a href="article.html?id=ying-di-wang"><span class="num">七</span><span class="name">应帝王</span></a></li>
+      </ul>
+    </div>
+
+    <div class="home-card" id="card-wai">
+      <div class="home-card-header">
+        <span class="home-card-title">庄子·外篇</span>
+        <span class="home-card-count">15篇</span>
+      </div>
+      <ul class="home-card-list">
+        <li><a href="article.html?id=pian-mu"><span class="num">八</span><span class="name">骈拇</span></a></li>
+        <li><a href="article.html?id=ma-ti"><span class="num">九</span><span class="name">马蹄</span></a></li>
+        <li><a href="article.html?id=qu-qie"><span class="num">十</span><span class="name">胠箧</span></a></li>
+        <li><a href="article.html?id=zai-you"><span class="num">十一</span><span class="name">在宥</span></a></li>
+        <li><a href="article.html?id=tian-di"><span class="num">十二</span><span class="name">天地</span></a></li>
+        <li><a href="article.html?id=tian-dao"><span class="num">十三</span><span class="name">天道</span></a></li>
+        <li><a href="article.html?id=tian-yun"><span class="num">十四</span><span class="name">天运</span></a></li>
+        <li><a href="article.html?id=ke-yi"><span class="num">十五</span><span class="name">刻意</span></a></li>
+        <li><a href="article.html?id=shan-xing"><span class="num">十六</span><span class="name">缮性</span></a></li>
+        <li><a href="article.html?id=qiu-shui"><span class="num">十七</span><span class="name">秋水</span></a></li>
+        <li><a href="article.html?id=zhi-le"><span class="num">十八</span><span class="name">至乐</span></a></li>
+        <li><a href="article.html?id=da-sheng"><span class="num">十九</span><span class="name">达生</span></a></li>
+        <li><a href="article.html?id=shan-mu"><span class="num">二十</span><span class="name">山木</span></a></li>
+        <li><a href="article.html?id=tian-zi-fang"><span class="num">廿一</span><span class="name">田子方</span></a></li>
+        <li><a href="article.html?id=zhi-bei-you"><span class="num">廿二</span><span class="name">知北游</span></a></li>
+      </ul>
+    </div>
+
+    <div class="home-card" id="card-za">
+      <div class="home-card-header">
+        <span class="home-card-title">庄子·杂篇</span>
+        <span class="home-card-count">11篇</span>
+      </div>
+      <ul class="home-card-list">
+        <li><a href="article.html?id=geng-sang-chu"><span class="num">廿三</span><span class="name">庚桑楚</span></a></li>
+        <li><a href="article.html?id=xu-wu-gui"><span class="num">廿四</span><span class="name">徐无鬼</span></a></li>
+        <li><a href="article.html?id=ze-yang"><span class="num">廿五</span><span class="name">则阳</span></a></li>
+        <li><a href="article.html?id=wai-wu"><span class="num">廿六</span><span class="name">外物</span></a></li>
+        <li><a href="article.html?id=yu-yan"><span class="num">廿七</span><span class="name">寓言</span></a></li>
+        <li><a href="article.html?id=rang-wang"><span class="num">廿八</span><span class="name">让王</span></a></li>
+        <li><a href="article.html?id=dao-zhi"><span class="num">廿九</span><span class="name">盗跖</span></a></li>
+        <li><a href="article.html?id=shuo-jian"><span class="num">三十</span><span class="name">说剑</span></a></li>
+        <li><a href="article.html?id=yu-fu"><span class="num">卅一</span><span class="name">渔父</span></a></li>
+        <li><a href="article.html?id=lie-yu-kou"><span class="num">卅二</span><span class="name">列御寇</span></a></li>
+        <li><a href="article.html?id=tian-xia"><span class="num">卅三</span><span class="name">天下</span></a></li>
+      </ul>
+    </div>
+
+    <div class="home-card" id="card-dao">
+      <div class="home-card-header">
+        <span class="home-card-title">道家经典</span>
+        <span class="home-card-count">7篇</span>
+      </div>
+      <ul class="home-card-list">
+        <li><a href="article.html?id=qing-jing-jing"><span class="num">一</span><span class="name">太上老君说常清静经</span></a></li>
+        <li><a href="article.html?id=taiyi-jinhua"><span class="num">二</span><span class="name">太乙金华宗旨</span></a></li>
+        <li><a href="article.html?id=dao-de-jing"><span class="num">三</span><span class="name">道德经</span></a></li>
+        <li><a href="article.html?id=wen-zi"><span class="num">四</span><span class="name">文子</span></a></li>
+        <li><a href="article.html?id=lie-zi"><span class="num">五</span><span class="name">列子</span></a></li>
+        <li><a href="article.html?id=huainan-zi"><span class="num">六</span><span class="name">淮南子</span></a></li>
+        <li><a href="article.html?id=bao-pu-zi"><span class="num">七</span><span class="name">抱朴子</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Float Nav -->
+  <div class="float-nav" id="floatNav">
+    <button class="float-nav-btn" onclick="toggleFloatNav()" title="哲思经典导航">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="float-nav-panel" id="floatNavPanel">
+      <div class="float-nav-header">
+        <div class="float-nav-header-title">哲思经典</div>
+      </div>
+      <div class="float-nav-section">
+        <button class="float-nav-section-btn" onclick="toggleSection(this)">
+          <span>庄子·内篇（7篇）</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="float-nav-items open">
+          <a class="float-nav-item" href="article.html?id=xiaoyao-you">逍遥游</a>
+          <a class="float-nav-item" href="article.html?id=qi-wu-lun">齐物论</a>
+          <a class="float-nav-item" href="article.html?id=yang-sheng-zhu">养生主</a>
+          <a class="float-nav-item" href="article.html?id=ren-jian-shi">人间世</a>
+          <a class="float-nav-item" href="article.html?id=de-chong-fu">德充符</a>
+          <a class="float-nav-item" href="article.html?id=da-zong-shi">大宗师</a>
+          <a class="float-nav-item" href="article.html?id=ying-di-wang">应帝王</a>
+        </div>
+      </div>
+      <div class="float-nav-section">
+        <button class="float-nav-section-btn" onclick="toggleSection(this)">
+          <span>庄子·外篇（15篇）</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="float-nav-items">
+          <a class="float-nav-item" href="article.html?id=pian-mu">骈拇</a>
+          <a class="float-nav-item" href="article.html?id=ma-ti">马蹄</a>
+          <a class="float-nav-item" href="article.html?id=qu-qie">胠箧</a>
+          <a class="float-nav-item" href="article.html?id=zai-you">在宥</a>
+          <a class="float-nav-item" href="article.html?id=tian-di">天地</a>
+          <a class="float-nav-item" href="article.html?id=tian-dao">天道</a>
+          <a class="float-nav-item" href="article.html?id=tian-yun">天运</a>
+          <a class="float-nav-item" href="article.html?id=ke-yi">刻意</a>
+          <a class="float-nav-item" href="article.html?id=shan-xing">缮性</a>
+          <a class="float-nav-item" href="article.html?id=qiu-shui">秋水</a>
+          <a class="float-nav-item" href="article.html?id=zhi-le">至乐</a>
+          <a class="float-nav-item" href="article.html?id=da-sheng">达生</a>
+          <a class="float-nav-item" href="article.html?id=shan-mu">山木</a>
+          <a class="float-nav-item" href="article.html?id=tian-zi-fang">田子方</a>
+          <a class="float-nav-item" href="article.html?id=zhi-bei-you">知北游</a>
+        </div>
+      </div>
+      <div class="float-nav-section">
+        <button class="float-nav-section-btn" onclick="toggleSection(this)">
+          <span>庄子·杂篇（11篇）</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="float-nav-items">
+          <a class="float-nav-item" href="article.html?id=geng-sang-chu">庚桑楚</a>
+          <a class="float-nav-item" href="article.html?id=xu-wu-gui">徐无鬼</a>
+          <a class="float-nav-item" href="article.html?id=ze-yang">则阳</a>
+          <a class="float-nav-item" href="article.html?id=wai-wu">外物</a>
+          <a class="float-nav-item" href="article.html?id=yu-yan">寓言</a>
+          <a class="float-nav-item" href="article.html?id=rang-wang">让王</a>
+          <a class="float-nav-item" href="article.html?id=dao-zhi">盗跖</a>
+          <a class="float-nav-item" href="article.html?id=shuo-jian">说剑</a>
+          <a class="float-nav-item" href="article.html?id=yu-fu">渔父</a>
+          <a class="float-nav-item" href="article.html?id=lie-yu-kou">列御寇</a>
+          <a class="float-nav-item" href="article.html?id=tian-xia">天下</a>
+        </div>
+      </div>
+      <div class="float-nav-section">
+        <button class="float-nav-section-btn" onclick="toggleSection(this)">
+          <span>道家经典（7篇）</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="float-nav-items">
+          <a class="float-nav-item" href="article.html?id=qing-jing-jing">太上老君说常清静经</a>
+          <a class="float-nav-item" href="article.html?id=taiyi-jinhua">太乙金华宗旨</a>
+          <a class="float-nav-item" href="article.html?id=dao-de-jing">道德经</a>
+          <a class="float-nav-item" href="article.html?id=wen-zi">文子</a>
+          <a class="float-nav-item" href="article.html?id=lie-zi">列子</a>
+          <a class="float-nav-item" href="article.html?id=huainan-zi">淮南子</a>
+          <a class="float-nav-item" href="article.html?id=bao-pu-zi">抱朴子</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="brand">哲思经典</div>
+    <div class="copy"> Classical Chinese Texts</div>
+  </footer>
+
+  <script src="source_code/nav.js" defer></script>
+  <script>
+    // Cards scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.home-card').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

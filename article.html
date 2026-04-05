@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>哲思经典</title>
+  <link rel="stylesheet" href="source_code/nav.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="side-rule"></div>
+
+  <!-- 阅读进度条 -->
+  <div class="reading-progress">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- 返回首页 -->
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    <span>返回目录</span>
+  </a>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-label" id="hero-label"></div>
+    <h1 class="hero-title" id="hero-title">逍遥游</h1>
+    <div class="hero-subtitle" id="hero-subtitle"></div>
+  </section>
+
+  <!-- Reading Area -->
+  <div class="reading-area" id="reading-area">
+    <div class="reading-toolbar">
+      <button class="pinyin-toggle" id="pinyinToggle" onclick="togglePinyin()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span id="pinyinToggleLabel">显示拼音</span>
+      </button>
+    </div>
+    <div class="text-grid">
+      <div class="orig-col" id="orig-col"></div>
+      <div class="note-col" id="note-col">
+        <div class="note-col-header">注释</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Float Nav -->
+  <div class="float-nav" id="floatNav">
+    <button class="float-nav-btn" onclick="toggleFloatNav()" title="哲思经典导航">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="float-nav-panel" id="floatNavPanel">
+      <div class="float-nav-header">
+        <div class="float-nav-header-title">哲思经典</div>
+      </div>
+      <div class="float-nav-section">
+        <button class="float-nav-section-btn" onclick="toggleSection(this)">
+          <span>庄子·内篇（7篇）</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="float-nav-items open">
+          <a class="float-nav-item" href="article.html?id=xiaoyao-you">逍遥游</a>
+          <a class="float-nav-item" href="article.html?id=qi-wu-lun">齐物论</a>
+          <a class="float-nav-item" href="article.html?id=yang-sheng-zhu">养生主</a>
+          <a class="float-nav-item" href="article.html?id=ren-jian-shi">人间世</a>
+          <a class="float-nav-item" href="article.html?id=de-chong-fu">德充符</a>
+          <a class="float-nav-item" href="article.html?id=da-zong-shi">大宗师</a>
+          <a class="float-nav-item" href="article.html?id=ying-di-wang">应帝王</a>
+        </div>
+      </div>
+      <div class="float-nav-section">
+        <button class="float-nav-section-btn" onclick="toggleSection(this)">
+          <span>庄子·外篇（15篇）</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="float-nav-items">
+          <a class="float-nav-item" href="article.html?id=pian-mu">骈拇</a>
+          <a class="float-nav-item" href="article.html?id=ma-ti">马蹄</a>
+          <a class="float-nav-item" href="article.html?id=qu-qie">胠箧</a>
+          <a class="float-nav-item" href="article.html?id=zai-you">在宥</a>
+          <a class="float-nav-item" href="article.html?id=tian-di">天地</a>
+          <a class="float-nav-item" href="article.html?id=tian-dao">天道</a>
+          <a class="float-nav-item" href="article.html?id=tian-yun">天运</a>
+          <a class="float-nav-item" href="article.html?id=ke-yi">刻意</a>
+          <a class="float-nav-item" href="article.html?id=shan-xing">缮性</a>
+          <a class="float-nav-item" href="article.html?id=qiu-shui">秋水</a>
+          <a class="float-nav-item" href="article.html?id=zhi-le">至乐</a>
+          <a class="float-nav-item" href="article.html?id=da-sheng">达生</a>
+          <a class="float-nav-item" href="article.html?id=shan-mu">山木</a>
+          <a class="float-nav-item" href="article.html?id=tian-zi-fang">田子方</a>
+          <a class="float-nav-item" href="article.html?id=zhi-bei-you">知北游</a>
+        </div>
+      </div>
+      <div class="float-nav-section">
+        <button class="float-nav-section-btn" onclick="toggleSection(this)">
+          <span>庄子·杂篇（11篇）</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="float-nav-items">
+          <a class="float-nav-item" href="article.html?id=geng-sang-chu">庚桑楚</a>
+          <a class="float-nav-item" href="article.html?id=xu-wu-gui">徐无鬼</a>
+          <a class="float-nav-item" href="article.html?id=ze-yang">则阳</a>
+          <a class="float-nav-item" href="article.html?id=wai-wu">外物</a>
+          <a class="float-nav-item" href="article.html?id=yu-yan">寓言</a>
+          <a class="float-nav-item" href="article.html?id=rang-wang">让王</a>
+          <a class="float-nav-item" href="article.html?id=dao-zhi">盗跖</a>
+          <a class="float-nav-item" href="article.html?id=shuo-jian">说剑</a>
+          <a class="float-nav-item" href="article.html?id=yu-fu">渔父</a>
+          <a class="float-nav-item" href="article.html?id=lie-yu-kou">列御寇</a>
+          <a class="float-nav-item" href="article.html?id=tian-xia">天下</a>
+        </div>
+      </div>
+      <div class="float-nav-section">
+        <button class="float-nav-section-btn" onclick="toggleSection(this)">
+          <span>道家经典（7篇）</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="float-nav-items">
+          <a class="float-nav-item" href="article.html?id=qing-jing-jing">太上老君说常清静经</a>
+          <a class="float-nav-item" href="article.html?id=taiyi-jinhua">太乙金华宗旨</a>
+          <a class="float-nav-item" href="article.html?id=dao-de-jing">道德经</a>
+          <a class="float-nav-item" href="article.html?id=wen-zi">文子</a>
+          <a class="float-nav-item" href="article.html?id=lie-zi">列子</a>
+          <a class="float-nav-item" href="article.html?id=huainan-zi">淮南子</a>
+          <a class="float-nav-item" href="article.html?id=bao-pu-zi">抱朴子</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="brand">哲思经典</div>
+    <div class="copy"> Classical Chinese Texts</div>
+  </footer>
+
+  <script src="source_code/nav.js" defer></script>
+  <script>
+    // Reading progress bar
+    const progressBar = document.getElementById('progressBar');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    async function loadArticle() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id') || 'xiaoyao-you';
+      try {
+        const resp = await fetch(`data/${id}.json`);
+        if (!resp.ok) { document.getElementById('hero-title').textContent = '文章未找到'; return; }
+        const data = await resp.json();
+        renderArticle(data);
+      } catch (e) {
+        document.getElementById('hero-title').textContent = '加载失败';
+        console.error(e);
+      }
+    }
+
+    function renderArticle(data) {
+      document.getElementById('hero-label').textContent = data.label || '';
+      document.getElementById('hero-title').textContent = data.title || '';
+      document.getElementById('hero-subtitle').textContent = data.subtitle || '';
+
+      if (data.bgChar) {
+        const hero = document.getElementById('hero');
+        const after = document.createElement('div');
+        after.style.cssText = `
+          position: absolute; right: -5%; top: 50%;
+          transform: translateY(-50%);
+          font-family: "ZCOOL XiaoWei", serif;
+          font-size: 38vw; color: var(--ink); opacity: 0.018;
+          line-height: 1; pointer-events: none; user-select: none;
+          letter-spacing: -0.05em;
+        `;
+        after.textContent = data.bgChar;
+        hero.appendChild(after);
+      }
+
+      let origHTML = '';
+      let noteHTML = '';
+
+      (data.blocks || []).forEach((block, i) => {
+        const rubyHTML = block.ruby || block.orig;
+        origHTML += `
+        <div class="orig-block" data-reveal id="orig-${i}">
+          <div class="orig-block-num">${block.num}</div>
+          <div class="orig-block-text">${block.orig}</div>
+          <div class="orig-ruby" style="display:none">${rubyHTML}</div>
+        </div>`;
+        noteHTML += `
+        <div class="note-block" data-reveal id="note-${i}" data-target="orig-${i}">
+          <div class="note-block-num">${block.num}</div>
+          <div class="note-block-text"><p>${block.note || ''}</p></div>
+        </div>`;
+      });
+
+      if (data.coreQuote) {
+        origHTML += `
+        <div class="core-quote" data-reveal>
+          <blockquote>${data.coreQuote.replace(/；/g, '<br>')}</blockquote>
+          <cite>——${data.title}</cite>
+        </div>`;
+      }
+
+      if (data.comparison && data.comparison.length > 0) {
+        let rows = '';
+        data.comparison.forEach(row => {
+          rows += `<tr><td class="row-label">${row.label}</td><td>${row.left}</td><td>${row.right}</td></tr>`;
+        });
+        origHTML += `
+        <div class="comparison-section" data-reveal>
+          <div class="comparison-label">对照</div>
+          <table>
+            <thead><tr><th style="width:90px;"></th><th></th><th></th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>`;
+      }
+
+      document.getElementById('orig-col').innerHTML = origHTML;
+      document.getElementById('note-col').innerHTML = '<div class="note-col-header">注释</div>' + noteHTML;
+
+      document.querySelectorAll('.float-nav-item').forEach(a => {
+        if (a.getAttribute('href') === `article.html?id=${data.id}`) a.classList.add('active');
+      });
+
+      observeReveal();
+      updateProgress();
+    }
+
+    function observeReveal() {
+      // Scroll reveal animation
+      const revealObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+
+      // Scroll spy: highlight note block when corresponding orig block is in view
+      const origBlocks = document.querySelectorAll('.orig-block[id]');
+      const noteBlocks = document.querySelectorAll('.note-block[data-target]');
+
+      const spyObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            noteBlocks.forEach(nb => {
+              if (nb.getAttribute('data-target') === id) {
+                nb.classList.add('active');
+              } else {
+                nb.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+
+      origBlocks.forEach(el => spyObs.observe(el));
+    }
+
+    let pinyinVisible = false;
+    function togglePinyin() {
+      pinyinVisible = !pinyinVisible;
+      document.querySelectorAll('.orig-ruby').forEach(el => {
+        el.style.display = pinyinVisible ? 'block' : 'none';
+      });
+      document.querySelectorAll('.orig-block-text').forEach(el => {
+        el.style.display = pinyinVisible ? 'none' : 'block';
+      });
+      document.getElementById('pinyinToggleLabel').textContent = pinyinVisible ? '隐藏拼音' : '显示拼音';
+      document.getElementById('pinyinToggle').classList.toggle('active', pinyinVisible);
+    }
+
+    loadArticle();
+  </script>
+</body>
+</html>
