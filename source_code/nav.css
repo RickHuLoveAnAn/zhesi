@@ -290,6 +290,24 @@ body::before {
   width: 0%;
   transition: width 0.3s ease;
 }
+.audio-stop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+.audio-stop:hover {
+  color: var(--vermilion);
+  border-color: var(--vermilion);
+}
 .text-grid {
   display: grid;
   grid-template-columns: 1fr 320px;

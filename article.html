@@ -43,6 +43,9 @@
       <div class="audio-progress" id="audioProgress" style="display:none">
         <span id="audioBlockNum"></span>
         <div class="audio-progress-bar"><div class="audio-progress-fill" id="audioProgressFill"></div></div>
+        <button class="audio-stop" onclick="stopAudio()" title="停止">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
     </div>
     <div class="text-grid">
@@ -333,7 +336,7 @@
       }
 
       isPlaying() {
-        return this.synth.paused || (this.synth.speaking && !this.paused);
+        return this.synth.speaking && !this.paused;
       }
 
       start() {
