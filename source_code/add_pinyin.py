@@ -45,8 +45,9 @@ def build_pinyin_sentences(orig: str) -> str:
     """
     Build pinyin string grouped by sentence for TTS reading.
     Splits orig by sentence-ending punctuation (。；) and computes
-    pinyin for each sentence independently, then joins sentences
-    with ' 。 ' so TTS reads each sentence as one continuous phrase.
+    pinyin for each sentence independently.
+    NO spaces within a sentence — TTS reads continuous text naturally.
+    Only句末标点 (。；) serve as natural pauses.
     """
     # Split orig into parts: [text, sep, text, sep, ...]
     parts = re.split(r'(。|；)', orig)
@@ -55,23 +56,21 @@ def build_pinyin_sentences(orig: str) -> str:
         if not part.strip():
             continue
         if part in '。；':
-            # sentence boundary - add separator
+            # sentence boundary
             if sentences:
-                sentences.append(' ' + part + ' ')
+                sentences.append(part)
             continue
-        # Regular text: compute pinyin and join syllables with spaces
+        # Regular text: compute pinyin and join syllables WITHOUT spaces
         words = list(jieba.cut(part))
         syllable_groups = []
         for word in words:
             if not word.strip():
                 continue
             pinyins = lazy_pinyin(word, style=Style.TONE)
-            syllable_groups.append(' '.join(pinyins))
-        sentences.append(' '.join(syllable_groups))
-    result = ''.join(sentences)
-    # Clean up multiple spaces
-    result = re.sub(r' +', ' ', result).strip()
-    return result
+            # Join WITHOUT spaces so TTS reads as continuous text
+            syllable_groups.append(''.join(pinyins))
+        sentences.append(''.join(syllable_groups))
+    return ''.join(sentences)
 
 
 def add_pinyin_to_file(json_path: Path) -> bool:
