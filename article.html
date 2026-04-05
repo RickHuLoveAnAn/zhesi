@@ -344,7 +344,11 @@
       articleAudio.addEventListener('pause', onAudioPause);
       articleAudio.addEventListener('error', () => {
         stopAudio();
-        document.getElementById('audioToggle').style.display = 'none';
+        const btn = document.getElementById('audioToggle');
+        btn.classList.remove('playing');
+        btn.style.opacity = '0.35';
+        btn.style.pointerEvents = 'none';
+        btn.title = '音频未生成';
       });
     }
 
