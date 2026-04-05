@@ -278,6 +278,15 @@ def test_article_html_renders_ruby_div():
         "Missing hidden orig-ruby div in article.html"
 
 
+def test_article_html_has_audio_toggle():
+    """article.html has audio toggle button and AudioController"""
+    html = (BASE / 'article.html').read_text(encoding='utf-8')
+    assert 'id="audioToggle"' in html, "Missing audioToggle button"
+    assert 'toggleAudio()' in html, "Missing toggleAudio function"
+    assert 'AudioController' in html, "Missing AudioController class"
+    assert '__articleBlocks' in html, "Missing __articleBlocks exposure"
+
+
 if __name__ == '__main__':
     import pytest
     pytest.main([__file__, '-v'])

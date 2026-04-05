@@ -249,6 +249,47 @@ body::before {
   border-color: var(--vermilion);
   background: rgba(184,58,46,0.04);
 }
+.audio-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 0.72rem;
+  font-family: "Noto Serif SC", serif;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.audio-toggle:hover, .audio-toggle.playing {
+  color: var(--vermilion);
+  border-color: var(--vermilion);
+  background: rgba(184,58,46,0.04);
+}
+.audio-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+.audio-progress-bar {
+  width: 80px;
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.audio-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--vermilion), var(--gold));
+  width: 0%;
+  transition: width 0.3s ease;
+}
 .text-grid {
   display: grid;
   grid-template-columns: 1fr 320px;
@@ -290,6 +331,15 @@ body::before {
               transform 0.7s cubic-bezier(0.22,1,0.36,1);
 }
 .orig-block.visible { opacity: 1; transform: translateY(0); }
+.orig-block.audio-active {
+  background: rgba(184,58,46,0.05);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-left: -8px;
+  margin-right: -8px;
+  transition: background 0.3s ease;
+}
+.orig-block.audio-active .orig-block-num { opacity: 1; color: var(--vermilion); }
 .orig-block-num {
   font-family: "ZCOOL XiaoWei", serif;
   font-size: 1.1rem;
