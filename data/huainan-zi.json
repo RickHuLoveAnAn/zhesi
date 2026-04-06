@@ -11,11 +11,11 @@
   "blocks": [
     {
       "num": "一",
-      "orig": "天气为魂，地气为魄， Geist 之守，体气乃通。",
-      "note": "魂魄与体气：天气为魂，地气为魄， Geist 守住，体气乃通——人的精神与形体相合，生命才完整。",
-      "pinyin": "tiān qì wèi hún ， dì qì wèi pò ， Geist zhī shǒu ， tǐ qì nǎi tōng 。",
-      "ruby": "<ruby>天<rt>tiān</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>魂<rt>hún</rt></ruby>，<ruby>地<rt>dì</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>魄<rt>pò</rt></ruby>， G <ruby>之<rt>zhī</rt></ruby><ruby>守<rt>shǒu</rt></ruby>，<ruby>体<rt>tǐ</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>乃<rt>nǎi</rt></ruby><ruby>通<rt>tōng</rt></ruby>。",
-      "pinyinSentences": "tiānqìwèihún，dìqìwèipò，Geistzhīshǒu，tǐqìnǎitōng。"
+      "orig": "天气为魂，地气为魄，魂之守，体气乃通。",
+      "note": "魂魄与体气：天气为魂，地气为魄，魂守住，体气乃通——人的精神与形体相合，生命才完整。",
+      "pinyin": "tiān qì wèi hún ， dì qì wèi pò ， hún zhī shǒu ， tǐ qì nǎi tōng 。",
+      "ruby": "<ruby>天<rt>tiān</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>魂<rt>hún</rt></ruby>，<ruby>地<rt>dì</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>魄<rt>pò</rt></ruby>，<ruby>魂<rt>hún</rt></ruby><ruby>之<rt>zhī</rt></ruby><ruby>守<rt>shǒu</rt></ruby>，<ruby>体<rt>tǐ</rt></ruby><ruby>气<rt>qì</rt></ruby><ruby>乃<rt>nǎi</rt></ruby><ruby>通<rt>tōng</rt></ruby>。",
+      "pinyinSentences": "tiānqìwèihún，dìqìwèipò，húnzhīshǒu，tǐqìnǎitōng。"
     },
     {
       "num": "二",
